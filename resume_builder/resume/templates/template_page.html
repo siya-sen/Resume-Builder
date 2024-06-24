@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %} 
+
+<div class="card-container-template">
+    
+    <div class="card-template-page">
+        
+        <h3>Template1-Elegant</h3>
+        <img src="{% static 'images/template1.jpg' %}" width="400px">
+        <a href="{% url 'resume_template_elegant' %}" class="btn btn-primary">Click Here</a>
+    </div>
+    <div class="card-template-page">
+        
+        <h3>Template2-Creative</h3>
+        <img src="{% static 'images/template2.jpg' %}" >
+        <a href="{% url 'resume_template_creative' %}" class="btn btn-primary">Click Here</a>
+    </div>
+    <div class="card-template-page">
+        
+        <h3>Template3-Minimalist</h3>
+        <img src="{% static 'images/template3.jpg' %}" >
+        <a href="{% url 'resume_template_minimalist' %}" class="btn btn-primary">Click Here</a>
+    </div>
+    <div class="card-template-page">
+        
+        <h3>Template4-modern</h3>
+        <img src="{% static 'images/template4.jpg' %}" >
+        <a href="{% url 'resume_template_modern' %}" class="btn btn-primary">Click Here</a>
+    </div>
+    
+    <!-- Repeat for more templates -->
+</div>
+<div class="text-center mt-3">
+    <a href="{% url 'homepage' %}" class="btn btn-secondary" style="margin-bottom:50px;">Back</a>
+</div>
+{% endblock %}

@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="d-flex justify-content-center">
+    <div class="card shadow w-50">
+        <div class="card-header bg-primary text-white text-center">
+            <h3>Sign Up</h3>
+        </div>
+        <div class="card-body">
+            <form action="{% url 'signup' %}" method="post">
+                {% csrf_token %}
+               
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" name="username" class="form-control " id="username" >
+                    {% comment %} {{ form.username }} {% endcomment %}
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" name="email" class="form-control " id="email" >
+                    {% comment %} {{ form.email }} {% endcomment %}
+                </div>
+                <div class="form-group">
+                    <label for="password1">Password</label>
+                    <input type="password" name="password1" class="form-control " id="password1" >
+                    {% comment %} {{ form.password1 }} {% endcomment %}
+                </div>
+                <div class="form-group">
+                    <label for="password2">Confirm Password</label>
+                    <input type="password" name="password2" class="form-control " id="password2" >
+                    {% comment %} {{ form.password2 }} {% endcomment %}
+                </div>
+                <button type="submit" class="btn btn-primary btn-block">Sign Up</button>
+            </form>
+        </div>
+        <div class="card-footer text-center">
+            <p>Already have an account? <a href="{% url 'login' %}">Login here</a></p>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <title>Elegant Resume Template</title>
+    
+    <style>
+        /* styles_elegant.css */
+
+        body {
+            font-family: 'Georgia', serif;
+            background-color: #e9ecef;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 80%;
+            margin: auto;
+            overflow: hidden;
+        }
+
+        .header {
+            background: #fff;
+            padding: 20px;
+            text-align: center;
+            border-bottom: 1px solid #ccc;
+        }
+
+        .header h1 {
+            margin: 0;
+            font-size: 2.5em;
+        }
+
+        .header p {
+            margin: 5px 0;
+        }
+
+        .header a {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        .section {
+            background: #fff;
+            margin: 20px 0;
+            padding: 20px;
+            border: 1px solid #ccc;
+        }
+
+        .section h2 {
+            border-bottom: 2px solid #007bff;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+
+        .section .experience, .section .education {
+            margin-bottom: 20px;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>{{ resume.full_name }}</h1>
+            <p>{{ resume.email }} | {{ resume.phone }} | {{ resume.address }}</p>
+            <p><a href="{{ resume.linkedin_profile }}" target="_blank">LinkedIn</a> | <a href="{{ resume.github_profile }}" target="_blank">GitHub</a></p>
+        </div>
+
+        <div class="section">
+            <h2>Work Experience</h2>
+            {% if resume.company_name %}
+                <div class="experience">
+                    <h3>{{ resume.job_title }}</h3>
+                    <p>{{ resume.company_name }} | {{ resume.employment_dates }}</p>
+                    <p>{{ resume.job_description }}</p>
+                </div>
+            {% else %}
+                <p>No work experience provided.</p>
+            {% endif %}
+        </div>
+
+        <div class="section">
+            <h2>Education</h2>
+            {% if resume.institution_name %}
+                <div class="education">
+                    <h3>{{ resume.degree }}</h3>
+                    <p>{{ resume.institution_name }} | {{ resume.attendance_dates }}</p>
+                    <p>GPA: {{ resume.gpa }}</p>
+                </div>
+            {% else %}
+                <p>No education details provided.</p>
+            {% endif %}
+        </div>
+
+        <div class="section">
+            <h2>Skills</h2>
+            <ul>
+                {% if resume.programming_languages %}<li><strong>Programming Languages:</strong> {{ resume.programming_languages }}</li>{% endif %}
+                {% if resume.web_frameworks %}<li><strong>Web Frameworks:</strong> {{ resume.web_frameworks }}</li>{% endif %}
+                {% if resume.databases %}<li><strong>Databases:</strong> {{ resume.databases }}</li>{% endif %}
+                {% if resume.cloud_platforms %}<li><strong>Cloud Platforms:</strong> {{ resume.cloud_platforms }}</li>{% endif %}
+                {% if resume.soft_skills %}<li><strong>Soft Skills:</strong> {{ resume.soft_skills }}</li>{% endif %}
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>Awards and Honors</h2>
+            {% if resume.awards %}<p>{{ resume.awards }}</p>{% else %}<p>No awards or honors provided.</p>{% endif %}
+        </div>
+
+        <div class="section">
+            <h2>Projects</h2>
+            {% if resume.projects %}<p>{{ resume.projects }}</p>{% else %}<p>No projects provided.</p>{% endif %}
+        </div>
+    </div>
+    <div class="card-footer text-center">
+        <a href="{% url 'resume_pdf' %}" class="btn btn-primary">Download PDF</a>
+    </div>
+    <div class="text-center mt-3">
+        <a href="{% url 'template_page' %}" class="btn btn-secondary" style="margin-bottom:50px;">Back</a>
+    </div>
+</body>
+</html>

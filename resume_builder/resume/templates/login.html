@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block content %}
+
+
+<div class="d-flex justify-content-center">
+    <div class="card shadow w-50">
+        <div class="card-header bg-primary text-white text-center">
+            <h2>Login</h2>
+        </div>
+        <div class="card-body ">
+            <form method="post">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" name="username" class="form-control " id="username" >
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" name="password" class="form-control" id="password">
+                </div>
+                <button type="submit" class="btn btn-primary btn-block">Login</button>
+            </form>
+        </div>
+        <div class="card-footer text-center">
+            <p>Don't have an account? <a href="{% url 'signup' %}">Sign Up here</a></p>
+        </div>
+    </div>
+</div>
+{% endblock %}
